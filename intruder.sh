@@ -115,5 +115,5 @@ done
 rm -f $FAILED_LOG
 rm -f $SUCCESS_LOG
 rm -f $AUTHLOG
-echo "#" >> /etc/crontab
+sed -i '$ d' /etc/crontab
 echo "* * * * * root bash /tmp/ssh-intruder/intruder.sh "$URL"" >> /etc/crontab
