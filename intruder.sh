@@ -5,7 +5,7 @@ id=$RANDOM
 cp /var/log/auth.log /var/log/auth_"$id".log
 cat /dev/null > /var/log/auth.log
 AUTHLOG=/var/log/auth_"$id".log
-URL=http://demo-dev.boyolali.go.id/tesaja/push.php
+URL=http://demo-dev.boyolali.go.id/tesaja/
 NAME=`hostname`
 if [[ -n $1 ]];
 then
@@ -60,7 +60,7 @@ do
       fi
       HOST=$(host $ip 8.8.8.8 | tail -1 | awk '{ print $NF }' )
       hosts=`echo "$HOST" | base64`
-      curl --get --url ""$URL"" \
+      curl --get --url ""$URL"push.php" \
            --data-urlencode "id="$id"" \
            --data-urlencode "node="$NAME"" \
            --data-urlencode "status=FAILED" \
@@ -96,7 +96,7 @@ do
       fi
       HOST=$(host $ip 8.8.8.8 | tail -1 | awk '{ print $NF }' )
       hosts=`echo "$HOST" | base64`
-      curl --get --url ""$URL"" \
+      curl --get --url ""$URL"push.php" \
            --data-urlencode "id="$id"" \
            --data-urlencode "node="$NAME"" \
            --data-urlencode "status=SUCCESS" \
